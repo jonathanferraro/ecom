@@ -1,4 +1,5 @@
 const pool = require('./database');
+require('dotenv').config();
 
 const getCart = async (user_id) => {
     const result = await pool.query(
