@@ -5,7 +5,7 @@ const cartRoutes = require('./routes/cart');
 require('dotenv').config();
 
 // cors
-const cors = require('cors');
+const cors = require('../node_modules/cors');
 app.use(cors());
 
 const morgan = require('morgan');

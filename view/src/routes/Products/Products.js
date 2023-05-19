@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { selectProducts } from "../../store/products/Products.reducers";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { loadProducts } from "../../store/products/Products.actions";
 
+
 export const Products = () => {
-  // const [productList, setProductList] = useState();
   const [error, setError] = useState();
   const productList = useSelector(selectProducts);
   const dispatch = useDispatch();

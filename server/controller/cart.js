@@ -1,4 +1,8 @@
-const { getCart, addToCart, removeFromCart } = require("../model/cart.js");
+const {
+  getCart,
+  addToCart,
+  removeFromCart,
+} = require("../model/cart.js");
 
 exports.readCart = async (req, res) => {
   try {
