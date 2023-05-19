@@ -4,6 +4,4 @@ const {readAllProducts} = require('../controller/products.js');
 
 router.get('/products', readAllProducts);
 
-// router.get('/products/:id', readProductById);
-
 module.exports = router;

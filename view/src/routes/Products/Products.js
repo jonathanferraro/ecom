@@ -26,6 +26,8 @@ export const Products = () => {
             {product.name}
             <br />
             {product.description}
+            <br/>
+            <img src={product.image_url}/>
           </li>
         ))}
       </ul>
