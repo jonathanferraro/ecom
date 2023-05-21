@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { selectProducts } from "../../store/products/Products.reducers";
 import { useSelector, useDispatch } from "react-redux";
 import { loadProducts } from "../../store/products/Products.actions";
+import { ProductCard } from "../../components/ProductCard/ProductCard";
+
+import './Products.css';
 
 
 export const Products = () => {
@@ -19,17 +22,18 @@ export const Products = () => {
       {error && <p style={{ color: "red" }}>{error}</p>}
 
 
-      <ul>
+      <div className="all-products">
         {Object.values(productList).map((product) => (
-          <li key={product.id}>
-            {product.name}
-            <br />
-            {product.description}
-            <br/>
-            <img src={product.image_url}/>
-          </li>
+
+            <ProductCard
+              key={product.id}
+              name={product.name}
+              description={product.description}
+              url={product.image_url}
+            />
+
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

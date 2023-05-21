@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .logo {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  }
+  
+  .logo img {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  button {
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
