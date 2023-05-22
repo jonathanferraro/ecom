@@ -20,13 +20,10 @@ export function Header() {
                 search bar
             </div>
             <div>
-                Cart
+                <button onClick={() => navigate('/cart')}>Cart</button>
             </div>
             <div>
-                <button onClick={() => navigate('/register')}>Register</button>
-            </div>
-            <div>
-                <button onClick={() => navigate('/login')}>Login</button>
+                <button onClick={() => navigate('/login')}>Hello, Sign In</button>
             </div>
         </div>
     );
