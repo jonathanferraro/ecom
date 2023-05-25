@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 
+import { registerUser } from '../../apis/register';
+import { register } from '../../store/auth/authAPI';
+import { useDispatch } from 'react-redux'
+
 import './Register.css';
 
 export function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        // dispatch(register(username, password));
+        registerUser(username, password);
     };
 
 
 
     return (
         <div className='registration'>
+            {username}
+            <br/>
+            {password}
             <div className='register-box'>
                 <div className='register-message'>
                     <h1>Sign Up</h1>

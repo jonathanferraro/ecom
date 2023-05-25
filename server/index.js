@@ -7,11 +7,14 @@ const passport = require('passport');
 
 const productRoutes = require('./routes/products');
 const cartRoutes = require('./routes/cart');
+const userRoutes = require('./routes/users')
 
 
 // cors
 const cors = require('cors');
 app.use(cors());
+
+app.use(express.json());
 
 const morgan = require('morgan');
 app.use(morgan('dev'));
@@ -44,6 +47,7 @@ const port = process.env.PORT || 8000;
 // route middlewares
 app.use('/api', productRoutes);
 app.use('/api', cartRoutes);
+app.use('/api', userRoutes);
 
 
 

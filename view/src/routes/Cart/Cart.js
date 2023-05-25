@@ -18,6 +18,7 @@ export function Cart() {
                     />
                 ))}
             </div>
+            <button className='cart-check-out-button'>Check Out</button>
         </div>
     )
 };
