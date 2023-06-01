@@ -25,9 +25,12 @@ app.use(flash());
 app.use(express.urlencoded({ extended: false }));
 
 const initializePassport = require('./loaders/passport-config');
+const { getUserByUsername, getUserById }  = require('./model/users');
+
 initializePassport(
     passport,
-    username => users.find(user => user.username === username)
+    getUserByUsername,
+    getUserById
 );
 
 // session

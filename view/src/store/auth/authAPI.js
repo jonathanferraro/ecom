@@ -23,4 +23,5 @@ export const register = createAsyncThunk(
             throw error;
         }
     }
-)
+);
+

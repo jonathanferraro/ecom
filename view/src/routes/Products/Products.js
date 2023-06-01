@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { selectProducts } from "../../store/products/Products.reducers";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import { loadProducts } from "../../store/products/Products.actions";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
+
+import { selectUser } from "../../store/auth/authSlice";
 
 import './Products.css';
 
@@ -11,6 +14,9 @@ export const Products = () => {
   const [error, setError] = useState();
   const productList = useSelector(selectProducts);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     dispatch(loadProducts());
@@ -18,15 +24,16 @@ export const Products = () => {
 
   return (
     <div>
-      <h1>Products Component test</h1>
+      {user && user.username}
       {error && <p style={{ color: "red" }}>{error}</p>}
 
 
       <div className="all-products">
         {Object.values(productList).map((product) => (
-
+            
             <ProductCard
               key={product.id}
+              id={product.id}
               name={product.name}
               description={product.description}
               url={product.image_url}

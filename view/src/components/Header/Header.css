@@ -17,7 +17,7 @@
     cursor: pointer;
   }
   
-  button {
+  .header button {
     padding: 8px 16px;
     background-color: #333;
     color: #fff;

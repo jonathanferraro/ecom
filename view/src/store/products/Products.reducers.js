@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { loadProducts } from './Products.actions';
 
-const initialState = {};
 
 const productSlice = createSlice({
     name: 'products',
-    initialState,
+    initialState: {
+        status: 'idle',
+    },
     reducers: {},
     extraReducers: builder => {
         builder

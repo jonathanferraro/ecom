@@ -11,9 +11,11 @@ const { insertUser } = require('../model/users');
 
 // });
 
-// router.post('/login', (req, res) => {
-
-// });
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+}));
 
 // router.get('/register', (res, req) => {
     
@@ -30,14 +32,19 @@ router.post('/register', async (req, res) => {
         const result = await insertUser(username, hashedPassword);
 
         res.status(201).send(result);
-
     } catch (err) {
         res.status(500).json({ error: err.message });
         
     }
-
-    console.log(username, password)
 });
+
+router.get('/auth/status', (req, res) => {
+    if (req.isAuthenticated()) {
+        res.status(200).json({ authenticated: true });
+    } else {
+        res.status(200).json({ authenticated: false });
+    }
+})
 
 
 module.exports = router;
