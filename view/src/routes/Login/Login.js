@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { login } from '../../apis/auth';
+
 import './Login.css';
 
 export function Login() {
@@ -8,7 +10,7 @@ export function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        login(username, password)
     };
 
     return (

@@ -38,13 +38,23 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.get('/auth/status', (req, res) => {
+router.get('/status', (req, res) => {
     if (req.isAuthenticated()) {
         res.status(200).json({ authenticated: true });
     } else {
         res.status(200).json({ authenticated: false });
     }
-})
+});
+
+router.post('/logout', (req, res) => {
+    req.logout((err) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({ error: 'Internal server error' });
+        }
+        res.status(200).send({message: 'success'});
+    });
+});
 
 
 module.exports = router;

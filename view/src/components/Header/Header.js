@@ -1,11 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../../apis/auth';
 
 import './Header.css';
 
 export function Header() {
     const navigate = useNavigate(); 
 
+    const logoutHandler = () => {
+        logout();
+        navigate('/');
+    }
     
 
     return (
@@ -21,6 +26,9 @@ export function Header() {
             </div>
             <div>
                 <button onClick={() => navigate('/cart')}>Cart</button>
+            </div>
+            <div>
+                <button onClick={logoutHandler}>Logout</button>
             </div>
             <div>
                 <button onClick={() => navigate('/login')}>Hello, Sign In</button>

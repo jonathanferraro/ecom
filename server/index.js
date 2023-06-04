@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 const productRoutes = require('./routes/products');
@@ -24,14 +23,6 @@ app.use(flash());
 
 app.use(express.urlencoded({ extended: false }));
 
-const initializePassport = require('./loaders/passport-config');
-const { getUserByUsername, getUserById }  = require('./model/users');
-
-initializePassport(
-    passport,
-    getUserByUsername,
-    getUserById
-);
 
 // session
 const session = require('express-session');
@@ -43,6 +34,16 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+const initializePassport = require('./loaders/passport-config');
+const { getUserByUsername, getUserById }  = require('./model/users');
+
+initializePassport(
+    passport,
+    getUserByUsername,
+    getUserById
+);
 
 // port
 const port = process.env.PORT || 8000;
