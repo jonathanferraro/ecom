@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { login } from '../../apis/auth';
+import { useDispatch } from 'react-redux';
 
+import { login } from '../../apis/auth';
+import { isAuthenticated } from '../../store/auth/authAPI';
 import './Login.css';
 
 export function Login() {
@@ -8,6 +10,7 @@ export function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const dispatch = useDispatch();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -22,6 +25,7 @@ export function Login() {
                 setSuccessMessage('Login successful!');
                 // Perform necessary actions on successful login
                 localStorage.setItem('authenticated', 'true');
+                dispatch(isAuthenticated());
                 setTimeout(() => {
                     window.location.href = '/';
                   }, 1000);

@@ -1,28 +1,28 @@
-export function isAuthenticated() {
-  const authenticated = localStorage.getItem('authenticated');
-  if (authenticated) {
-    return true;
-  } else {
-    return fetch('http://localhost:8000/api/status')
-      .then(response => {
-        if (response.ok) {
-          // User is authenticated
-          localStorage.setItem('authenticated', 'true');
-          return true;
-        } else {
-          // User is not authenticated
-          localStorage.removeItem('authenticated');
-          return false;
-        }
-      })
-      .catch(error => {
-        // Handle any errors that occurred during the request
-        console.error('Error checking authentication status:', error);
-        localStorage.removeItem('authenticated');
-        return false;
-      });
-  }
-};
+// export function isAuthenticated() {
+//   const authenticated = localStorage.getItem('authenticated');
+//   if (authenticated) {
+//     return true;
+//   } else {
+//     return fetch('http://localhost:8000/api/status')
+//       .then(response => {
+//         if (response.ok) {
+//           // User is authenticated
+//           localStorage.setItem('authenticated', 'true');
+//           return true;
+//         } else {
+//           // User is not authenticated
+//           localStorage.removeItem('authenticated');
+//           return false;
+//         }
+//       })
+//       .catch(error => {
+//         // Handle any errors that occurred during the request
+//         console.error('Error checking authentication status:', error);
+//         localStorage.removeItem('authenticated');
+//         return false;
+//       });
+//   }
+// };
 
   export const login = async (username, password) => {
     try {

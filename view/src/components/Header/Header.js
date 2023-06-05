@@ -1,44 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAuthenticated } from '../../store/auth/authSlice';
+import { isAuthenticated } from '../../store/auth/authAPI';
+
 import { logout } from '../../apis/auth';
-import { isAuthenticated } from '../../apis/auth';
 
 import './Header.css';
 
 export function Header() {
     const navigate = useNavigate();
-    const [authenticated, setAuthenticated] = useState(false);
+    const dispatch = useDispatch();
+    const authenticated = useSelector(selectAuthenticated)
 
-    const checkAuthentication = async () => {
-        try {
-            const result = await isAuthenticated();
-            setAuthenticated(result);
-        } catch (error) {
-            console.error('Error checking authentication status:', error);
-            setAuthenticated(false);
-        }
-    };
 
     const logoutHandler = () => {
         logout();
         localStorage.removeItem('authenticated'); // Remove the authentication status from localStorage
-        setAuthenticated(false); // Update the authenticated state immediately
+        dispatch(isAuthenticated()); // Update the authenticated state immediately
         navigate('/');
     }
-
-    useEffect(() => {
-        const storedAuthenticated = localStorage.getItem('authenticated'); // Retrieve the authentication status from localStorage
-        if (storedAuthenticated === 'true') {
-            setAuthenticated(true);
-        } else {
-            checkAuthentication();
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('authenticated', authenticated); // Store the authentication status in localStorage
-    }, [authenticated]);
     
+    useEffect(() => {
+        dispatch(isAuthenticated());
+    }, []);
 
     return (
         <div className='header'>
