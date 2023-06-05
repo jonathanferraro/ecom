@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { login } from '../../apis/auth';
 
 import './Login.css';
@@ -7,7 +6,6 @@ import './Login.css';
 export function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
@@ -23,6 +21,10 @@ export function Login() {
                 setError('');
                 setSuccessMessage('Login successful!');
                 // Perform necessary actions on successful login
+                localStorage.setItem('authenticated', 'true');
+                setTimeout(() => {
+                    window.location.href = '/';
+                  }, 1000);
             }
         } catch (error) {
             console.error('Error logging in:', error);
@@ -37,7 +39,7 @@ export function Login() {
                     <h1>Sign In</h1>
                 </div>
                 {error && <div style={{'color': 'red'}}>{error}</div>}
-                {successMessage && <div>{successMessage}</div>}
+                {successMessage && <div style={{'color': 'green'}}>{successMessage}</div>}
                 <form className='login-form' onSubmit={handleLogin}>
                     <div className='username-field'>
                         <label htmlFor="username">Username</label>
