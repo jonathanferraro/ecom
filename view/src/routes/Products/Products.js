@@ -22,7 +22,7 @@ export const Products = () => {
 
   useEffect(() => {
     dispatch(loadProducts());
-    setAuthenticated(isAuthenticated());
+    // setAuthenticated(isAuthenticated());
   }, []);
 
   return (

@@ -7,19 +7,29 @@ const passport = require('passport');
 
 const { insertUser } = require('../model/users');
 
-// router.get('/login', (req, res) => {
+// router.post('/login', passport.authenticate('local', {
+//     successRedirect: '/test',
+//     failureRedirect: '/fail',
+//     failureFlash: true
+// }));
 
-// });
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return res.status(401).json({ error: info.message });
+      }
+      req.login(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        return res.json({ message: 'Login successful' });
+      });
+    })(req, res, next);
+  });
 
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-}));
-
-// router.get('/register', (res, req) => {
-    
-// });
 
 router.post('/register', async (req, res) => {
     const {username, password} = req.body;
@@ -42,7 +52,7 @@ router.get('/status', (req, res) => {
     if (req.isAuthenticated()) {
         res.status(200).json({ authenticated: true });
     } else {
-        res.status(200).json({ authenticated: false });
+        res.status(400).json({ authenticated: false });
     }
 });
 

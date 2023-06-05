@@ -8,9 +8,26 @@ export function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+
+    const handleLogin = async (e) => {
         e.preventDefault();
-        login(username, password)
+
+        try {
+            const response = await login(username, password);
+            if (response.error) {
+                setError(response.error);
+                setSuccessMessage('');
+            } else {
+                setError('');
+                setSuccessMessage('Login successful!');
+                // Perform necessary actions on successful login
+            }
+        } catch (error) {
+            console.error('Error logging in:', error);
+            
+        }
     };
 
     return (
@@ -19,7 +36,9 @@ export function Login() {
                 <div className='login-message'>
                     <h1>Sign In</h1>
                 </div>
-                <form className='login-form' onSubmit={handleSubmit}>
+                {error && <div style={{'color': 'red'}}>{error}</div>}
+                {successMessage && <div>{successMessage}</div>}
+                <form className='login-form' onSubmit={handleLogin}>
                     <div className='username-field'>
                         <label htmlFor="username">Username</label>
                         <input 
