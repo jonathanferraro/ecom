@@ -37,11 +37,11 @@ app.use(passport.session());
 
 
 const initializePassport = require('./loaders/passport-config');
-const { getUserByUsername, getUserById }  = require('./model/users');
+const { getUserByEmail, getUserById }  = require('./model/users');
 
 initializePassport(
     passport,
-    getUserByUsername,
+    getUserByEmail,
     getUserById
 );
 

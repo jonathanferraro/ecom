@@ -1,10 +1,25 @@
 import React, { useState } from 'react';
 import { CartProductCard } from '../../components/CartProductCard/CartProductCard';
-
 import './Cart.css';
+import { useSelector } from 'react-redux';
+import { selectAuthenticated } from '../../store/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 export function Cart() {
     const testProductList = {1: {name: 'shirt1', description: 'cool shirt'}, 2: {name: 'shirt2', description: 'cool shirt'}, 3: {name: 'shirt3', description: 'cool shirt'}, 4: {name: 'shirt4', description: 'cool shirt'}}
+
+    const authenticated = useSelector(selectAuthenticated);
+    const navigate = useNavigate();
+    
+    if (!authenticated) {
+        return (
+            <div>
+                <h1>Your shopping cart is empty</h1>
+                <button onClick={() => navigate('/login')}>Sign in to your account</button>
+                <button onClick={() => navigate('/register')}>Sign up now</button>
+            </div>
+        )
+    }
 
     return (
         <div className='cart'>

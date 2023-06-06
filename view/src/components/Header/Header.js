@@ -44,12 +44,11 @@ export function Header() {
             <div>
                 <button onClick={() => navigate('/cart')}>Cart</button>
             </div>
-            <div>
+            {authenticated ? (
                 <button onClick={logoutHandler}>Logout</button>
-            </div>
-            <div>
-                <button onClick={() => navigate('/login')}>Hello, Sign In</button>
-            </div>
+                ) : (
+                    <button onClick={() => navigate('/login')}>Hello, Sign In</button>
+                )}
         </div>
     );
 };

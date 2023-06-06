@@ -1,16 +1,16 @@
 require('dotenv').config();
 const pool = require('./database');
 
-const insertUser = async (username, password) => {
-    const newUser =  await pool.query(`INSERT INTO users (username, password) VALUES ($1, $2) RETURNING username`, 
-        [username, password]);
+const insertUser = async (email, password, l_name, f_name) => {
+    const newUser =  await pool.query(`INSERT INTO users (email, password, l_name, f_name ) VALUES ($1, $2, $3, $4) RETURNING email, l_name, f_name `, 
+        [email, password, l_name, f_name]);
 
     return newUser.rows[0];
 };
 
-const getUserByUsername = async (username) => {
-    const result = await pool.query(`SELECT * FROM users WHERE username = $1`, 
-        [username]);
+const getUserByEmail = async (email) => {
+    const result = await pool.query(`SELECT * FROM users WHERE email = $1`, 
+        [email]);
     return result.rows[0];
 };
 
@@ -22,6 +22,7 @@ const getUserById = async (id) => {
 
 module.exports = {
     insertUser,
-    getUserByUsername,
+    getUserByEmail,
     getUserById,
 };
+

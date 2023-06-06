@@ -32,14 +32,14 @@ router.post('/login', (req, res, next) => {
 
 
 router.post('/register', async (req, res) => {
-    const {username, password} = req.body;
+    const {email, password, l_name, f_name} = req.body;
 
     try {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
         // put user into DB
-        const result = await insertUser(username, hashedPassword);
+        const result = await insertUser(email, hashedPassword, l_name, f_name);
 
         res.status(201).send(result);
     } catch (err) {

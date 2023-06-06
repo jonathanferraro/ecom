@@ -10,10 +10,13 @@ import { useNavigate } from 'react-router-dom';
 import './Register.css';
 
 export function Register() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [f_name, setF_name] = useState('');
+    const [l_name, setL_name] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [nameError, setNameError] = useState('');
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -22,14 +25,18 @@ export function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!f_name || !l_name) {
+            setNameError('First Name and Last Name required')
+        }
         
-        if (password === confirmPassword){
-            setPasswordError('');
-            dispatch(register({username, password}));
-            navigate('/');
-            
-        } else {
+        else if (password !== confirmPassword) {
             setPasswordError('Passwords do not match')
+        } else {   
+
+            setPasswordError('');
+            dispatch(register({email, password, l_name, f_name}));
+            navigate('/login');
         }
         
     };
@@ -38,7 +45,11 @@ export function Register() {
     return (
         <div className='registration'>
             <br/>
-            {username}
+            {f_name}
+            <br/>
+            {l_name}
+            <br/>
+            {email}
             <br/>
             {password}
             <br/>
@@ -48,18 +59,45 @@ export function Register() {
                     <h1>Sign Up</h1>
                     <h3>It's quick and easy.</h3>
                 </div>
-                {passwordError && <div className='password-error'>
-                    <p style={{'color': 'red'}}>{passwordError}</p>
-                </div>}
+                {nameError && 
+                    <div className='password-error'>
+                        <p style={{'color': 'red'}}>{nameError}</p>
+                    </div>
+                }
+                {passwordError && 
+                    <div className='name-error'>
+                        <p style={{'color': 'red'}}>{passwordError}</p>
+                    </div>}
                 <form className='registration-form' onSubmit={handleSubmit}>
-                    <div className='username-field'>
-                        <label htmlFor="username">Username</label>
+
+                    <div className='frst-name-field'>
+                        <label htmlFor="f_name">First Name</label>
                         <input 
                             type="text"
-                            id="username"
-                            placeholder='Username'
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            id="f_name"
+                            placeholder='First Name'
+                            value={f_name}
+                            onChange={(e) => setF_name(e.target.value)}
+                        />
+                    </div>
+                    <div className='last-name-field'>
+                        <label htmlFor="l_name">Last Name</label>
+                        <input 
+                            type="text"
+                            id="l_name"
+                            placeholder='Last Name'
+                            value={l_name}
+                            onChange={(e) => setL_name(e.target.value)}
+                        />
+                    </div>
+                    <div className='email-field'>
+                        <label htmlFor="email">Email</label>
+                        <input 
+                            type="email"
+                            id="email"
+                            placeholder='email@email.com'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div className='password-field'>

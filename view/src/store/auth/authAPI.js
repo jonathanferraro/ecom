@@ -2,12 +2,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const register = createAsyncThunk(
     'auth/register',
-    async ({username, password}) => {
+    async ({email, password, l_name, f_name }) => {
         try {
             const response = await fetch('http://localhost:8000/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ email, password, l_name, f_name }),
               });
           
               if (!response.ok) {

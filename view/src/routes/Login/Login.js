@@ -6,7 +6,7 @@ import { isAuthenticated } from '../../store/auth/authAPI';
 import './Login.css';
 
 export function Login() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
@@ -16,7 +16,7 @@ export function Login() {
         e.preventDefault();
 
         try {
-            const response = await login(username, password);
+            const response = await login(email, password);
             if (response.error) {
                 setError(response.error);
                 setSuccessMessage('');
@@ -45,14 +45,14 @@ export function Login() {
                 {error && <div style={{'color': 'red'}}>{error}</div>}
                 {successMessage && <div style={{'color': 'green'}}>{successMessage}</div>}
                 <form className='login-form' onSubmit={handleLogin}>
-                    <div className='username-field'>
-                        <label htmlFor="username">Username</label>
+                    <div className='email-field'>
+                        <label htmlFor="email">Email</label>
                         <input 
-                            type="text"
-                            id="username"
-                            placeholder='Username'
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            type="email"
+                            id="email"
+                            placeholder='Email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div className='password-field'>
