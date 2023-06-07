@@ -34,7 +34,7 @@ export function Header() {
                 />
             </div>
             <div>
-                search bar
+                potential search bar
             </div>
 
             <div>

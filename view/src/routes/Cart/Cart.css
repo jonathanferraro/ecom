@@ -17,3 +17,43 @@
 .cart h1 {
     margin-left: 30px;
 }
+
+
+
+/* ---------------- empty cart --------------------- */
+
+.empty-cart {
+  text-align: center;
+  padding: 20px;
+}
+
+.empty-cart h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sign-in-button,
+.sign-up-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sign-in-button:hover,
+.sign-up-button:hover {
+  background-color: #d0d0d0;
+}
+
+.sign-in-button:focus,
+.sign-up-button:focus {
+  outline: none;
+}

@@ -13,11 +13,16 @@ export function Cart() {
     
     if (!authenticated) {
         return (
-            <div>
+            <div className="empty-cart">
                 <h1>Your shopping cart is empty</h1>
-                <h3>Login or Sign Up to see your cart</h3>
-                <button onClick={() => navigate('/login')}>Sign in to your account</button>
-                <button onClick={() => navigate('/register')}>Sign up now</button>
+                <div className="button-group">
+                    <button className="sign-in-button" onClick={() => navigate('/login')}>
+                    Sign in to your account
+                    </button>
+                    <button className="sign-up-button" onClick={() => navigate('/register')}>
+                    Sign up now
+                    </button>
+                </div>
             </div>
         )
     }

@@ -15,11 +15,7 @@ export function Register() {
     const [l_name, setL_name] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
-
-
-
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,89 +40,81 @@ export function Register() {
 
 
     return (
-        <div className='registration'>
-            <br/>
-            {f_name}
-            <br/>
-            {l_name}
-            <br/>
-            {email}
-            <br/>
-            {password}
-            <br/>
-            {confirmPassword}
-            <div className='register-box'>
-                <div className='register-message'>
-                    <h1>Sign Up</h1>
-                    <h3>It's quick and easy.</h3>
-                </div>
-                {error && 
-                    <div className='password-error'>
-                        <p style={{'color': 'red'}}>{error}</p>
-                    </div>
-                }
-
-                <form className='registration-form' onSubmit={handleSubmit}>
-                    <div className='frst-name-field'>
-                        <label htmlFor="f_name">First Name</label>
-                        <input 
-                            type="text"
-                            id="f_name"
-                            placeholder='First Name'
-                            value={f_name}
-                            required
-                            onChange={(e) => setF_name(e.target.value)}
-                        />
-                    </div>
-                    <div className='last-name-field'>
-                        <label htmlFor="l_name">Last Name</label>
-                        <input 
-                            type="text"
-                            id="l_name"
-                            placeholder='Last Name'
-                            value={l_name}
-                            required
-                            onChange={(e) => setL_name(e.target.value)}
-                        />
-                    </div>
-                    <div className='email-field'>
-                        <label htmlFor="email">Email</label>
-                        <input 
-                            type="email"
-                            id="email"
-                            placeholder='email@email.com'
-                            value={email}
-                            required
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div className='password-field'>
-                        <label htmlFor="password">Password</label>
-                        <input 
-                            type="password"
-                            id="password"
-                            placeholder="Password"
-                            value={password}
-                            required
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <div className='password-field'>
-                        <label htmlFor="confirm-password">Confirm Password</label>
-                        <input 
-                            type="password"
-                            id="confirm-password"
-                            placeholder="Confirm Password"
-                            value={confirmPassword}
-                            required
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                        />
-                    </div>
-                    <button className='register-button' type="submit">Register</button>
-                </form>
+        <div className="registration">
+        <div className="register-box">
+          <div className="register-message">
+            <h1>Sign Up</h1>
+            <h3>It's quick and easy.</h3>
+          </div>
+          {error && (
+            <div className="password-error">
+              <p className="error-text">{error}</p>
             </div>
-            <p>By clicking Register, you agree to our Terms, Privacy Policy and Cookies Policy.</p>
+          )}
+  
+          <form className="registration-form" onSubmit={handleSubmit}>
+            <div className="form-field">
+              <label htmlFor="f_name">First Name</label>
+              <input
+                type="text"
+                id="f_name"
+                placeholder="First Name"
+                value={f_name}
+                required
+                onChange={(e) => setF_name(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="l_name">Last Name</label>
+              <input
+                type="text"
+                id="l_name"
+                placeholder="Last Name"
+                value={l_name}
+                required
+                onChange={(e) => setL_name(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="email@example.com"
+                value={email}
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                value={password}
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="confirm-password">Confirm Password</label>
+              <input
+                type="password"
+                id="confirm-password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                required
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+            <button className="register-button" type="submit">
+              Register
+            </button>
+          </form>
+          <p>By clicking Register, you agree to our Terms, Privacy Policy and Cookies Policy.</p>
         </div>
+      </div>
     )
 };
 
