@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-
-// import { registerUser } from '../../apis/register';
-import { register } from '../../store/auth/authAPI';
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import { register } from '../../apis/auth';
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-
+import { selectRegisterError } from '../../store/auth/authSlice';
 
 
 import './Register.css';
+
 
 export function Register() {
     const [email, setEmail] = useState('');
@@ -15,30 +14,32 @@ export function Register() {
     const [f_name, setF_name] = useState('');
     const [l_name, setL_name] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [passwordError, setPasswordError] = useState('');
-    const [nameError, setNameError] = useState('');
+    const [error, setError] = useState('');
+
+
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (!f_name || !l_name) {
-            setNameError('First Name and Last Name required')
+        if (password !== confirmPassword) {
+            setError('Passwords do not match')
+        } else {
+            setError('');
+            try {
+                const response = await register({email, password, l_name, f_name});
+                if (response.error) {
+                    setError(response.error);
+                } else {
+                    setError('');
+                    // Perform necessary actions on successful login
+                    navigate('/login');
+                }
+            } catch (error) {
+                console.error('Error logging in:', error);
+            }
         }
-        
-        else if (password !== confirmPassword) {
-            setPasswordError('Passwords do not match')
-        } else {   
-
-            setPasswordError('');
-            dispatch(register({email, password, l_name, f_name}));
-            navigate('/login');
-        }
-        
     };
 
 
@@ -59,17 +60,13 @@ export function Register() {
                     <h1>Sign Up</h1>
                     <h3>It's quick and easy.</h3>
                 </div>
-                {nameError && 
+                {error && 
                     <div className='password-error'>
-                        <p style={{'color': 'red'}}>{nameError}</p>
+                        <p style={{'color': 'red'}}>{error}</p>
                     </div>
                 }
-                {passwordError && 
-                    <div className='name-error'>
-                        <p style={{'color': 'red'}}>{passwordError}</p>
-                    </div>}
-                <form className='registration-form' onSubmit={handleSubmit}>
 
+                <form className='registration-form' onSubmit={handleSubmit}>
                     <div className='frst-name-field'>
                         <label htmlFor="f_name">First Name</label>
                         <input 
@@ -77,6 +74,7 @@ export function Register() {
                             id="f_name"
                             placeholder='First Name'
                             value={f_name}
+                            required
                             onChange={(e) => setF_name(e.target.value)}
                         />
                     </div>
@@ -87,6 +85,7 @@ export function Register() {
                             id="l_name"
                             placeholder='Last Name'
                             value={l_name}
+                            required
                             onChange={(e) => setL_name(e.target.value)}
                         />
                     </div>
@@ -97,6 +96,7 @@ export function Register() {
                             id="email"
                             placeholder='email@email.com'
                             value={email}
+                            required
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
@@ -107,6 +107,7 @@ export function Register() {
                             id="password"
                             placeholder="Password"
                             value={password}
+                            required
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
@@ -117,6 +118,7 @@ export function Register() {
                             id="confirm-password"
                             placeholder="Confirm Password"
                             value={confirmPassword}
+                            required
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                     </div>

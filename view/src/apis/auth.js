@@ -24,6 +24,31 @@
 //   }
 // };
 
+
+export const register = async ({email, password, l_name, f_name }) => {
+      try {
+          const response = await fetch('http://localhost:8000/api/register', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, password, l_name, f_name }),
+            });
+        
+            if (!response.ok) {
+              // Handle non-successful response
+              const errorData = await response.json();
+              console.log(errorData.error);
+              return errorData;
+            }
+        
+            const data = await response.json();
+            return data; 
+      } catch (error) {
+           // Handle any errors that occurred during the registration process
+          console.error('Error during registration:', error);
+          throw error;
+      }
+  };
+
   export const login = async (email, password) => {
     try {
       const response = await fetch('http://localhost:8000/api/login', {
