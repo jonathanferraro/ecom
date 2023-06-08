@@ -1,15 +1,22 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchCart } from "../../apis/cart";
 
 
 export const loadCart = createAsyncThunk(
-    'products/loadProducts',
+    'cart/loadCart',
     async () => {
-        try {
-            const response = await fetchCart();
-            return response.data;
-        } catch (error) {
-            throw error;
-        }
+      try {
+        const res = await fetch('http://localhost:8000/api/cart', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const data = await res.json();
+        return data.data;
+      } catch (error) {
+        throw new Error(error.message); // Throw the error
+      }
     }
-);
+  );
+
+

@@ -35,6 +35,7 @@ export const Products = () => {
               name={product.name}
               description={product.description}
               url={product.image_url}
+              price={product.price}
             />
 
         ))}

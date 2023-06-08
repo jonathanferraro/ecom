@@ -35,11 +35,6 @@ router.post('/login', (req, res, next) => {
 router.post('/register', async (req, res) => {
     const {email, password, l_name, f_name} = req.body;
 
-    // const user = await getUserByEmail(email);
-    // if (user) {
-    //   res.status(400).json({error: 'User with that email already exists'})
-    // }
-
     try {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);

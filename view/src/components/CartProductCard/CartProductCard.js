@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import './CartProductCard.css';
 
 export function CartProductCard(props) {
-    const {name, url} = props;
-
+    const {name, url, price, id, quantity} = props;
+    console.log('quantity', quantity)
+    console.log('url', url)
 
 
     return (
@@ -18,10 +19,10 @@ export function CartProductCard(props) {
             <div className='cart-product-card-details'>
                 <h3 className='cart-product-card-name'>{name}</h3>
                 <p className='cart-product-card-in-stock'>In Stock</p>
-                <p className='cart-product-card-quantity'>Quantity: 5</p>
+                <p className='cart-product-card-quantity'>Quantity: {quantity}</p>
             </div>
             <div className='cart-product-card-price'>
-                <p>$24.99</p>
+                <p>{price}</p>
             </div>
         </div>
     )
