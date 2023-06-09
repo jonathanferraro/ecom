@@ -6,12 +6,17 @@ const passport = require('passport');
 
 const productRoutes = require('./routes/products');
 const cartRoutes = require('./routes/cart');
-const userRoutes = require('./routes/users')
+const userRoutes = require('./routes/users');
+const { getUserByEmail, getUserById }  = require('./model/users');
+const initializePassport = require('./loaders/passport-config');
 
 
 // cors
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
 
 app.use(express.json());
 
@@ -36,8 +41,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-const initializePassport = require('./loaders/passport-config');
-const { getUserByEmail, getUserById }  = require('./model/users');
 
 initializePassport(
     passport,
@@ -49,9 +52,10 @@ initializePassport(
 const port = process.env.PORT || 8000;
 
 // route middlewares
+app.use('/api', userRoutes);
 app.use('/api', productRoutes);
 app.use('/api', cartRoutes);
-app.use('/api', userRoutes);
+
 
 
 

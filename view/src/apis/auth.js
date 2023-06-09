@@ -31,6 +31,7 @@ export const register = async ({email, password, l_name, f_name }) => {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ email, password, l_name, f_name }),
+              credentials: 'include',
             });
         
             if (!response.ok) {
@@ -57,6 +58,7 @@ export const register = async ({email, password, l_name, f_name }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
+        credentials: 'include',
       });
   
       if (response.ok) {

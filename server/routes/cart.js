@@ -9,7 +9,7 @@ const isAuthenticated = (req, res, next) => {
   res.status(401).json({message: "Unauthorized"});
 }
 
-router.get("/cart", async (req, res) => {
+router.get("/cart", isAuthenticated, async (req, res) => {
   
     try {
         const userId = req.user.id;

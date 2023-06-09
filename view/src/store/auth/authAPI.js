@@ -35,7 +35,9 @@ export const isAuthenticated = createAsyncThunk(
         return true;
       } else {
         try {
-          const response = await fetch('http://localhost:8000/api/status');
+          const response = await fetch('http://localhost:8000/api/status', {
+            credentials: 'include',
+          });
           if (response.ok) {
             // User is authenticated
             localStorage.setItem('authenticated', 'true');
