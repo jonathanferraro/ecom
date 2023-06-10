@@ -48,7 +48,7 @@ export function Register() {
           </div>
           {error && (
             <div className="password-error">
-              <p className="error-text">{error}</p>
+              <p style={{"color": "red"}} className="error-text">{error}</p>
             </div>
           )}
   

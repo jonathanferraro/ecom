@@ -8,11 +8,6 @@ const passport = require('passport');
 const { insertUser } = require('../model/users');
 const { getUserByEmail } = require('../model/users');
 
-// router.post('/login', passport.authenticate('local', {
-//     successRedirect: '/test',
-//     failureRedirect: '/fail',
-//     failureFlash: true
-// }));
 
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {

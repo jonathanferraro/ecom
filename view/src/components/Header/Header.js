@@ -42,7 +42,7 @@ export function Header() {
             </div>
 
             <div>
-                <button onClick={() => navigate('/cart')}>Cart</button>
+                <button onClick={() => window.location.href = '/cart'}>Cart</button>
             </div>
             {authenticated ? (
                 <button onClick={logoutHandler}>Logout</button>
