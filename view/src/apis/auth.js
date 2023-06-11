@@ -84,6 +84,7 @@ export const register = async ({email, password, l_name, f_name }) => {
     return fetch('http://localhost:8000/api/logout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
       })
         .then(response => {
           if (response.ok) {

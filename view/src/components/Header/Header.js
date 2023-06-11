@@ -18,7 +18,9 @@ export function Header() {
         logout();
         localStorage.removeItem('authenticated'); // Remove the authentication status from localStorage
         dispatch(isAuthenticated()); // Update the authenticated state immediately
-        navigate('/');
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 1000);
     }
     
     useEffect(() => {

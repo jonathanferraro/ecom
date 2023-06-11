@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getCartItemsByUserId, createCart, addToCart } = require('../model/cart');
+const { getCartByUserId, getCartItemsByUserId, createCart, addToCart } = require('../model/cart');
 
 const isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -20,30 +20,35 @@ router.get("/cart", isAuthenticated, async (req, res) => {
       }
 });
 
-router.post('/cart', async (req, res) => {
+router.post('/cart', isAuthenticated, async (req, res) => {
   const {product_id} = req.body;
-  const userId = req.user.id;
+  
 
   try {
-    const cart = await getCartItemsByUserId(userId).data;
+    const userId = req.user.id;
+
+    let userHasCart = await getCartByUserId(userId);
+    const cart = await getCartItemsByUserId(userId);
     
     // check if user has a cart
-    if (cart.length === 0) {
+    if (!userHasCart) {
       // create cart
-      await createCart(userId)
+      await createCart(userId);
 
     }
+
+    const { cart_id } = await getCartByUserId(userId);
 
     // check user cart to see if product is in cart
     for (const product of cart) {
       if (product.id == product_id) {
-        res.status(409).send('Duplicate product found in cart');
+        return res.status(409).json({ error: 'Product already in cart' });
       }
     }
 
     // add product to cart
-    await addToCart(userId, product_id);
-    res.sendStatus(201);
+    await addToCart(cart_id, product_id);
+    res.status(201).json({ message: 'Cart item added successfully' });
 
 
   } catch (err) {
@@ -61,17 +66,4 @@ router.post('/cart', async (req, res) => {
 
 module.exports = router;
 
-/* 
-get cart
-  if no cart, create one
-  then add product with quantity of 1
 
-check cart for product
-  if no product add product with quantity of 1
-  if product then check if quantity is neg or pos
-
-
-
-
-
-*/

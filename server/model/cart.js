@@ -30,18 +30,29 @@ const createCart = async (user_id) => {
 
 };
 
-const addToCart = async (user_id, product_id) => {
+
+const addToCart = async (cart_id, product_id) => {
     const result = await pool.query(
         `INSERT INTO cart_items (cart_id, product_id, quantity)
-        SELECT user_cart.cart_id, $1, 1
-        FROM user_cart
-        INNER JOIN cart_items ON user_cart.cart_id = cart_items.cart_id
-        INNER JOIN products ON cart_items.product_id = products.id
-        WHERE user_cart.user_id = $2;`,
-        [product_id, user_id]
+        VALUES ($1, $2, 1)`,
+        [cart_id, product_id]
     );
 
 };
+
+// const addToCart = async (user_id, product_id) => {
+//     const result = await pool.query(
+//         `INSERT INTO cart_items (cart_id, product_id, quantity)
+//         SELECT user_cart.cart_id, $1, 1
+//         FROM user_cart
+//         INNER JOIN cart_items ON user_cart.cart_id = cart_items.cart_id
+//         INNER JOIN products ON cart_items.product_id = products.id
+//         WHERE user_cart.user_id = $2
+//         LIMIT 1;`,
+//         [product_id, user_id]
+//     );
+
+// };
 
 
 
