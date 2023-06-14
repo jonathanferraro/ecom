@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectProducts } from '../../store/products/Products.reducers';
 import { loadProducts } from '../../store/products/Products.actions';
+import { addToCart } from '../../apis/cart';
 
 import './ProductPage.css';
 
@@ -14,6 +15,10 @@ export function ProductPage() {
     useEffect(() => {
       dispatch(loadProducts());
     }, []);
+
+    const addToCartHandler = () => {
+      addToCart(id);
+    };
   
     return (
       <div>
@@ -28,7 +33,7 @@ export function ProductPage() {
                     <div className='product-page-purchase'>
                         <h2>{product.name}</h2>
                         <h3>$24.99</h3>
-                        <button>Add to Cart</button>
+                        <button onClick={addToCartHandler}>Add to Cart</button>
                     </div>
                     <div className='product-page-description-container'>
                         <h4>Description</h4>

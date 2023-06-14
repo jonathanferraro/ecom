@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getCartByUserId, getCartItemsByUserId, createCart, addToCart } = require('../model/cart');
+const { getCartByUserId, getCartItemsByUserId, createCart, addToCart, editCartItemQuantity, deleteCartItem } = require('../model/cart');
 
 const isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -30,13 +30,14 @@ router.post('/cart', isAuthenticated, async (req, res) => {
     let userHasCart = await getCartByUserId(userId);
     const cart = await getCartItemsByUserId(userId);
     
-    // check if user has a cart
+    // check if user doesn't have a cart
     if (!userHasCart) {
       // create cart
       await createCart(userId);
 
     }
 
+    // get cart id
     const { cart_id } = await getCartByUserId(userId);
 
     // check user cart to see if product is in cart
@@ -56,13 +57,43 @@ router.post('/cart', isAuthenticated, async (req, res) => {
   }
 });
 
-// router.put('/cart', async (req, res) => {
+router.put('/cart', isAuthenticated, async (req, res) => {
+  const { product_id } = req.body;
+  const { quantity } = req.body;
 
-// });
+  try {
+    const userId = req.user.id;
+    const { cart_id } = await getCartByUserId(userId);
+    const cart = await getCartItemsByUserId(userId);
 
-// router.delete('/cart', async (req, res) => {
 
-// });
+
+    await editCartItemQuantity(quantity, cart_id, product_id);
+    res.status(200).json({message: 'Cart edited successfully'});
+
+
+  } catch (err) {
+    res.status(500).json({error: err.message})
+  }
+});
+
+router.delete('/cart', isAuthenticated, async (req, res) => {
+  const { product_id } = req.body;
+
+  try {
+    const userId = req.user.id;
+    const { cart_id } = await getCartByUserId(userId);
+
+    console.log('product_id: ', product_id);
+    console.log('cart_id: ', cart_id);
+
+    await deleteCartItem(cart_id, product_id);
+    res.sendStatus(204);
+
+  } catch (err) {
+    res.status(500).json({error: err.message})
+  }
+});
 
 module.exports = router;
 

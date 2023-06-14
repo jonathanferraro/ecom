@@ -4,8 +4,9 @@ import "./Cart.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuthenticated } from "../../store/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { selectCart, selectCartError } from "../../store/cart/Cart.reducers";
+import { selectCart } from "../../store/cart/Cart.reducers";
 import { loadCart } from "../../store/cart/Cart.API";
+import { deleteCartItem } from "../../apis/cart";
 
 export function Cart() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export function Cart() {
 
   useEffect(() => {
     dispatch(loadCart());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     calculateCartTotal();
@@ -30,6 +31,11 @@ export function Cart() {
 
     setCartPriceTotal(total);
   };
+
+  const deleteCartItemHandler = async (id) => {
+    await deleteCartItem(id);
+    window.location.href = '/cart'
+  }
 
   if (!authenticated) {
     return (
@@ -61,6 +67,8 @@ export function Cart() {
             url={product.image_url}
             price={product.price}
             quantity={product.quantity}
+            id={product.id}
+            onDelete={deleteCartItemHandler}
           />
         ))}
       </div>

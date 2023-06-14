@@ -13,6 +13,7 @@ export const loadCart = createAsyncThunk(
           credentials: 'include',
         });
         const data = await res.json();
+        console.log(data.data)
         return data.data;
       } catch (error) {
         throw new Error(error.message); // Throw the error
