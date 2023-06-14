@@ -26,7 +26,7 @@ export function Cart() {
   const calculateCartTotal = () => {
     let total = 0;
     Object.values(cartProducts).forEach((product) => {
-      total += Number(product.price);
+      total += (Number(product.price) * Number(product.quantity));
     });
 
     setCartPriceTotal(total);
@@ -59,7 +59,6 @@ export function Cart() {
   return (
     <div className="cart">
       <h1>Shopping Cart</h1>
-      <h2 className="cart-price">Price</h2>
       <div className="cart-products">
         {Object.values(cartProducts).map((product) => (
           <CartProductCard
@@ -73,7 +72,7 @@ export function Cart() {
         ))}
       </div>
       <button className="cart-check-out-button">Check Out</button>
-      <p>{cartPriceTotal}</p>
+      <p className="cart-subtotal">Subtotal: {cartPriceTotal.toFixed(2)}</p>
     </div>
   );
 }
