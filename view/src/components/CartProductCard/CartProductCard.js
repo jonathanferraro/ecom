@@ -2,12 +2,14 @@ import React from "react";
 import { editCart } from "../../apis/cart";
 import { loadCart } from "../../store/cart/Cart.API";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import "./CartProductCard.css";
 
 export function CartProductCard(props) {
   const { name, url, price, id, quantity, onDelete } = props;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const test = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const editCartHandler = async (e) => {
@@ -21,14 +23,10 @@ export function CartProductCard(props) {
     onDelete(id);
   };
 
-// Cart Product Card Component
-// Cart Product Card Component
- // Cart Product Card Component
-// Cart Product Card Component
     return (
         <div className="cart-product-card">
         <div className="cart-product-card-image">
-            <img src={url} alt="Product" />
+            <img src={url} alt="Product" onClick={() => navigate(`/products/${id}`)} />
         </div>
         <div className="cart-product-card-details">
             <div className="cart-product-card-header">

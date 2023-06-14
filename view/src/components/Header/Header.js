@@ -11,7 +11,7 @@ import './Header.css';
 export function Header() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const authenticated = useSelector(selectAuthenticated)
+    const authenticated = useSelector(selectAuthenticated);
 
 
     const logoutHandler = () => {

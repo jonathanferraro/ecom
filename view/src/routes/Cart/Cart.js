@@ -72,7 +72,7 @@ export function Cart() {
         ))}
       </div>
       <button className="cart-check-out-button">Check Out</button>
-      <p className="cart-subtotal">Subtotal: {cartPriceTotal.toFixed(2)}</p>
+      <p className="cart-subtotal">Subtotal: ${cartPriceTotal.toFixed(2)}</p>
     </div>
   );
 }

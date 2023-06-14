@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../../apis/cart";
+import { useSelector } from "react-redux";
+import { selectAuthenticated } from "../../store/auth/authSlice";
 
 export function ProductCard(props) {
   const { name, url, id, price } = props;
   const navigate = useNavigate();
+  const authenticated = useSelector(selectAuthenticated);
+  const [addedToCart, setAddedToCart] = useState(false);
 
-  const addToCartHandler = () => {
-    addToCart(id);
+  const addToCartHandler = async () => {
+    if (authenticated) {
+      await addToCart(id);
+      setAddedToCart(true);
+    } else {
+      navigate('/login');
+    }
   };
 
   return (
@@ -25,7 +34,15 @@ export function ProductCard(props) {
       <p className="product-price" onClick={() => navigate(`/products/${id}`)}>
         {price}
       </p>
-      <button onClick={addToCartHandler} className="product-add-to-cart">Add To Cart</button>
+      {!addedToCart ? 
+        (<button className="product-add-to-cart" onClick={addToCartHandler} >
+          Add To Cart
+        </button>)
+        :
+        (<button className="product-add-to-cart" style={{"background-color": "green"}}>
+          Added to cart!
+        </button>)
+      }
     </div>
   );
 }
