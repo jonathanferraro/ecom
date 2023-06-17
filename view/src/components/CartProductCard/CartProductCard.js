@@ -37,7 +37,7 @@ export function CartProductCard(props) {
             <div className="cart-product-card-quantity-container">
                 <p className="cart-product-card-quantity">Quantity:</p>
                 <div className="cart-product-card-select-container">
-                <select onChange={editCartHandler}>
+                <select className="quantity-selector" onChange={editCartHandler}>
                     {test.map((num) =>
                     num === quantity ? 
                     (<option key={num} value={num} selected>{num}</option>) : (

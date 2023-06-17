@@ -4,6 +4,7 @@
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #333;
+    height: 50px;
   }
   
   .logo {
@@ -13,7 +14,7 @@
   
   .logo img {
     width: 100px;
-    height: auto;
+    height: 60px;
     cursor: pointer;
   }
   
@@ -28,4 +29,11 @@
   button:hover {
     background-color: #555;
   }
+
+
+  /* cart drop down overlay */
+
+
+
+
   

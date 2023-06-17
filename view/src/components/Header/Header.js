@@ -3,16 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthenticated } from '../../store/auth/authSlice';
 import { isAuthenticated } from '../../store/auth/authAPI';
-
 import { logout } from '../../apis/auth';
+import { CartSidebar } from '../CartSidebar/CartSidebar';
 
+import shamazonLogo from 'C:/Users/swagn/OneDrive/Desktop/ecom/view/src/shamazon.png';
 import './Header.css';
 
 export function Header() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const authenticated = useSelector(selectAuthenticated);
-
 
     const logoutHandler = () => {
         logout();
@@ -27,10 +27,11 @@ export function Header() {
         dispatch(isAuthenticated());
     }, []);
 
+
     return (
         <div className='header'>
             <div className='logo'>
-                <img src="https://d.newsweek.com/en/full/2074886/gray-squirrel.webp?w=1600&h=900&q=88&f=cc2f2cf11ed100e026691bda1e513c48" 
+                <img src={shamazonLogo} 
                 alt="Logo" 
                 onClick={() => {navigate('/')}} 
                 />
@@ -43,9 +44,8 @@ export function Header() {
                 {authenticated ? (<div>Logged IN</div>) : (<div>Logged OUT</div>)}
             </div>
 
-            <div>
-                <button onClick={() => window.location.href = '/cart'}>Cart</button>
-            </div>
+            <CartSidebar />
+
             {authenticated ? (
                 <button onClick={logoutHandler}>Logout</button>
                 ) : (

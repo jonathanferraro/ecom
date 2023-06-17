@@ -57,22 +57,34 @@ export function Cart() {
   }
 
   return (
-    <div className="cart">
+    <div className="cart-component">
       <h1>Shopping Cart</h1>
-      <div className="cart-products">
-        {Object.values(cartProducts).map((product) => (
-          <CartProductCard
-            name={product.name}
-            url={product.image_url}
-            price={product.price}
-            quantity={product.quantity}
-            id={product.id}
-            onDelete={deleteCartItemHandler}
-          />
-        ))}
+      <div className="cart">
+        <div className="cart-products">
+          {Object.values(cartProducts).map((product) => (
+            <CartProductCard
+              name={product.name}
+              url={product.image_url}
+              price={product.price}
+              quantity={product.quantity}
+              id={product.id}
+              onDelete={deleteCartItemHandler}
+            />
+          ))}
+        </div>
+        <div className="order-summary-container cart-products-background">
+          <div className="order-summary">
+            <h2>Order Summary</h2>
+            <div className="order-summary-details">
+              <h4 className="order-summary-text">Subtotal: ${cartPriceTotal.toFixed(2)}</h4>
+              <h4 className="order-summary-text">Shipping: See Rates</h4>
+              <h4>Estimated Total: ${cartPriceTotal.toFixed(2)}</h4>
+            </div>
+            <button className="cart-check-out-button">Check Out</button>
+          </div>
+        </div>
       </div>
-      <button className="cart-check-out-button">Check Out</button>
-      <p className="cart-subtotal">Subtotal: ${cartPriceTotal.toFixed(2)}</p>
     </div>
   );
+  
 }
