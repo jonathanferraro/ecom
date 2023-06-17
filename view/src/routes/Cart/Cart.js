@@ -14,6 +14,7 @@ export function Cart() {
   const cartProducts = useSelector(selectCart);
   const authenticated = useSelector(selectAuthenticated);
   const [cartPriceTotal, setCartPriceTotal] = useState(0);
+  
 
   useEffect(() => {
     dispatch(loadCart());
