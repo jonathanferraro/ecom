@@ -9,12 +9,8 @@ import { selectUser } from "../../store/auth/authSlice";
 import './Products.css';
 
 export const Products = () => {
-  const [error, setError] = useState();
   const productList = useSelector(selectProducts);
   const dispatch = useDispatch();
-
-  const user = useSelector(selectUser);
-
 
   useEffect(() => {
     dispatch(loadProducts());
@@ -22,10 +18,6 @@ export const Products = () => {
 
   return (
     <div>
-      {user && user.username}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-
       <div className="all-products">
         {Object.values(productList).map((product) => (
             

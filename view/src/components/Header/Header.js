@@ -27,30 +27,44 @@ export function Header() {
         dispatch(isAuthenticated());
     }, []);
 
+    const handleCategoryNavigate = (e) => {
+        const category = e.target.dataset.category;
+        navigate(`/categories/${category}`)
+    };
+
 
     return (
         <div className='header'>
-            <div className='logo'>
-                <img src={shamazonLogo} 
-                alt="Logo" 
-                onClick={() => {navigate('/')}} 
-                />
-            </div>
-            <div>
-                potential search bar
-            </div>
+            <div className='top-header'>
+                <div className='logo'>
+                    <img src={shamazonLogo} 
+                    alt="Logo" 
+                    onClick={() => {navigate('/')}} 
+                    />
+                </div>
+                <div>
+                    potential search bar
+                </div>
 
-            <div>
-                {authenticated ? (<div>Logged IN</div>) : (<div>Logged OUT</div>)}
+                <div>
+                    {authenticated ? (<div>Logged IN</div>) : (<div>Logged OUT</div>)}
+                </div>
+
+                <CartSidebar />
+
+                {authenticated ? (
+                    <button onClick={logoutHandler}>Logout</button>
+                    ) : (
+                        <button onClick={() => navigate('/login')}>Hello, Sign In</button>
+                    )}
             </div>
-
-            <CartSidebar />
-
-            {authenticated ? (
-                <button onClick={logoutHandler}>Logout</button>
-                ) : (
-                    <button onClick={() => navigate('/login')}>Hello, Sign In</button>
-                )}
+            <div className='nav-header'>
+                <p data-category='all' onClick={handleCategoryNavigate}>All Products</p>
+                <p data-category='clothing' onClick={handleCategoryNavigate}>Clothing</p>
+                <p data-category='electronics' onClick={handleCategoryNavigate}>Electronics</p>
+                <p data-category='home_furniture' onClick={handleCategoryNavigate}>Home Furniture</p>
+                <p data-category='outdoors' onClick={handleCategoryNavigate}>Outdoors</p>
+            </div>
         </div>
     );
 };
