@@ -5,6 +5,7 @@ import { selectAuthenticated } from '../../store/auth/authSlice';
 import { isAuthenticated } from '../../store/auth/authAPI';
 import { logout } from '../../apis/auth';
 import { CartSidebar } from '../CartSidebar/CartSidebar';
+import { ProfileDropdown } from '../ProfileDropdown/ProfileDropdown';
 
 import shamazonLogo from 'C:/Users/swagn/OneDrive/Desktop/ecom/view/src/shamazon.png';
 import './Header.css';
@@ -52,6 +53,8 @@ export function Header() {
 
                 <CartSidebar />
 
+                {<ProfileDropdown />}
+
                 {authenticated ? (
                     <button onClick={logoutHandler}>Logout</button>
                     ) : (
@@ -59,10 +62,10 @@ export function Header() {
                     )}
             </div>
             <div className='nav-header'>
-                <p data-category='all' onClick={handleCategoryNavigate}>All Products</p>
-                <p data-category='clothing' onClick={handleCategoryNavigate}>Clothing</p>
-                <p data-category='electronics' onClick={handleCategoryNavigate}>Electronics</p>
-                <p data-category='home_furniture' onClick={handleCategoryNavigate}>Home Furniture</p>
+                <p className='nav-header-link' data-category='all' onClick={handleCategoryNavigate}>All Products</p>
+                <p className='nav-header-link' data-category='clothing' onClick={handleCategoryNavigate}>Clothing</p>
+                <p className='nav-header-link' data-category='electronics' onClick={handleCategoryNavigate}>Electronics</p>
+                <p className='nav-header-link' data-category='home_furniture' onClick={handleCategoryNavigate}>Home Furniture</p>
                 <p data-category='outdoors' onClick={handleCategoryNavigate}>Outdoors</p>
             </div>
         </div>

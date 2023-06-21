@@ -1,0 +1,69 @@
+import React, { useEffect, useState, useRef } from 'react';
+import './ProfileDropdown.css'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../apis/auth';
+import { isAuthenticated } from '../../store/auth/authAPI';
+
+
+export function ProfileDropdown() {
+    const dispatch = useDispatch();
+    const [test, setTest] = useState(false);
+    const dropdownRef = useRef(null);
+
+    const logoutHandler = () => {
+        logout();
+        localStorage.removeItem('authenticated'); 
+        dispatch(isAuthenticated()); 
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 1000);
+    }
+
+  
+    const toggleDropdown = () => {
+      setTest(!test);
+    };
+  
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setTest(false);
+      }
+    };
+  
+    useEffect(() => {
+      document.addEventListener('click', handleClickOutside);
+  
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }, []);
+
+  
+    return (
+      <div className="cart-dropdown" data-cart-dropdown ref={dropdownRef}>
+        <button className="link" data-dropdown-button onClick={toggleDropdown}>
+          Account
+        </button>
+  
+        <div
+          className={`cart-dropdown-menu ${test ? 'active' : ''}`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          
+          <div className="dropdown-checkout">
+            <button onClick={() => (window.location.href = '/')}>
+              Profile
+            </button>
+          </div>
+
+          <div className="dropdown-checkout">
+            <button onClick={logoutHandler}>
+              Logout
+            </button>
+          </div>
+
+        </div>
+      </div>
+    );
+  }

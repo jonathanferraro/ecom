@@ -1,0 +1,6 @@
+.category-title {
+    font-size: 2rem;
+    margin-left: 30px;
+    border-bottom: 1px solid black;
+    display: inline-block;
+}
