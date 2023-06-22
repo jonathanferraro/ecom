@@ -13,6 +13,7 @@ router.get("/cart", isAuthenticated, async (req, res) => {
   
     try {
         const userId = req.user.id;
+        console.log(userId);
         const cart = await getCartItemsByUserId(userId);
         res.status(200).json({ data: cart });
       } catch (err) {

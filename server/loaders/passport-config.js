@@ -32,6 +32,7 @@ const initialize = (passport, getUserByEmail, getUserById) => {
         try {
           const user = await getUserById(id);
           console.log('Deserialized user:', user)
+          console.log('id is:', id);
           return done(null, user);
         } catch (err) {
           return done(err);

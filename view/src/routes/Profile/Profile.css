@@ -1,0 +1,81 @@
+.profile-component {
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.profile {
+    display: flex;
+    gap: 20px;
+    background-color: #f9f9f9;
+
+  }
+  
+  .account-info {
+    flex: 1;
+    padding: 20px;
+
+  }
+  
+  .order-history {
+    flex: 1;
+    padding: 20px;
+
+  }
+  
+  .account-info h1,
+  .order-history h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .account-info-details,
+  .order-history-details {
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 20px 15px;
+  }
+
+  .account-info-details-label {
+    font-weight: bold;
+    color: black;
+  }
+  
+  .account-info-details p,
+  .order-history-details p {
+    margin-bottom: 5px;
+    margin: 8px 0;
+  }
+  
+  .account-info,
+  .order-history {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .account-info h1,
+  .order-history h1 {
+    color: #555;
+  }
+
+  .profile-component button {
+    margin: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+  }
+
+  
+  .profile-component button:hover {
+    background-color: #555;
+  }
+
+  
+
+  

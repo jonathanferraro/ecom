@@ -41,18 +41,18 @@ export function ProfileDropdown() {
 
   
     return (
-      <div className="cart-dropdown" data-cart-dropdown ref={dropdownRef}>
+      <div className="profile-dropdown" data-cart-dropdown ref={dropdownRef}>
         <button className="link" data-dropdown-button onClick={toggleDropdown}>
           Account
         </button>
   
         <div
-          className={`cart-dropdown-menu ${test ? 'active' : ''}`}
+          className={`profile-dropdown-menu ${test ? 'active' : ''}`}
           onClick={(e) => e.stopPropagation()}
         >
           
           <div className="dropdown-checkout">
-            <button onClick={() => (window.location.href = '/')}>
+            <button onClick={() => (window.location.href = '/profile')}>
               Profile
             </button>
           </div>

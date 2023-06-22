@@ -8,6 +8,11 @@ const insertUser = async (email, password, l_name, f_name) => {
     return newUser.rows[0];
 };
 
+
+
+
+// vvvvvv DON'T MODIFY THE BELOW. FOR PASSPORT AUTHENTICATION vvvvvv
+
 const getUserByEmail = async (email) => {
     const result = await pool.query(`SELECT * FROM users WHERE email = $1`, 
         [email]);

@@ -5,9 +5,27 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
-const { insertUser } = require('../model/users');
-const { getUserByEmail } = require('../model/users');
+const { insertUser} = require('../model/users');
 
+const isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.status(401).json({message: "Unauthorized"});
+}
+
+router.get('/user', isAuthenticated, async (req, res) => {
+
+  try {
+
+    console.log(req.user.id);
+    const {email, username, l_name, f_name} = req.user;
+    res.status(200).json({data: {email, username, l_name, f_name}});
+
+  } catch (error) {
+    res.status(500).send({error: error.message})
+  }
+});
 
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {

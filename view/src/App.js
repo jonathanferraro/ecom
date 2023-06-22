@@ -13,6 +13,7 @@ import { Login } from "./routes/Login/Login";
 import { Cart } from "./routes/Cart/Cart";
 import { ProductPage } from "./routes/ProductPage/ProductPage";
 import { ProductCategories } from "./routes/ProductCategories/ProductCategories";
+import { Profile } from "./routes/Profile/Profile";
 
 import {Test} from './components/Test';
 
@@ -27,6 +28,7 @@ function App() {
           <Route path='/categories/:category' element={<ProductCategories/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path='/profile' element={<Profile/>} />
           <Route path='/cart' element={<Cart/>} />
 
           <Route path="test" element={<Test/>} />
