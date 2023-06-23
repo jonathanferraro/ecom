@@ -46,7 +46,7 @@ export function ProductPage() {
                         {!addedToCart? 
                           <button onClick={addToCartHandler}>Add to Cart</button>
                           :
-                        (<button className="product-add-to-cart" style={{"background-color": "green"}}>
+                        (<button className="product-add-to-cart" style={{"background-color": "green", "color": 'white'}}>
                           Added to cart!
                         </button>)
                       }

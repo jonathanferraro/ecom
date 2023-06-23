@@ -49,18 +49,19 @@
   }
   
   .product-page-purchase button {
-    padding: 10px 20px;
-    background-color: #007bff;
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #f0c14b;
+    color: #111;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
-    color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
+
+  
   
   .product-page-purchase button:hover {
-    background-color: #0056b3;
+    background-color: #f1b620;
   }
   
   .product-page-purchase button:focus {

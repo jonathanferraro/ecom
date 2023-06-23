@@ -26,3 +26,16 @@
     pointer-events: auto;
   }
 
+
+  .profile-dropdown-link p {
+    cursor: pointer;
+    margin: 5px 0;
+    color: black;
+    text-decoration: underline;
+  }
+
+  .profile-dropdown-link p:hover {
+    color: rgb(240, 147, 7);
+    text-decoration: underline;
+  }
+

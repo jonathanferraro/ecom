@@ -44,11 +44,11 @@ export function Header() {
                     />
                 </div>
                 <div>
-                    potential search bar
+                    <p>potential search bar</p>
                 </div>
 
                 <div>
-                    {authenticated ? (<div>Logged IN</div>) : (<div>Logged OUT</div>)}
+                    <p>{authenticated ? (<div>Logged IN</div>) : (<div>Logged OUT</div>)}</p>
                 </div>
 
                 <CartSidebar />
@@ -66,7 +66,7 @@ export function Header() {
                 <p className='nav-header-link' data-category='clothing' onClick={handleCategoryNavigate}>Clothing</p>
                 <p className='nav-header-link' data-category='electronics' onClick={handleCategoryNavigate}>Electronics</p>
                 <p className='nav-header-link' data-category='home_furniture' onClick={handleCategoryNavigate}>Home Furniture</p>
-                <p data-category='outdoors' onClick={handleCategoryNavigate}>Outdoors</p>
+                <p className='nav-header-link' data-category='outdoors' onClick={handleCategoryNavigate}>Outdoors</p>
             </div>
         </div>
     );

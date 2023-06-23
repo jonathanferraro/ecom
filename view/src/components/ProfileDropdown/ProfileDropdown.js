@@ -51,16 +51,16 @@ export function ProfileDropdown() {
           onClick={(e) => e.stopPropagation()}
         >
           
-          <div className="dropdown-checkout">
-            <button onClick={() => (window.location.href = '/profile')}>
+          <div className="profile-dropdown-link">
+            <p onClick={() => (window.location.href = '/profile')}>
               Profile
-            </button>
+            </p>
           </div>
 
-          <div className="dropdown-checkout">
-            <button onClick={logoutHandler}>
+          <div className="profile-dropdown-link">
+            <p onClick={logoutHandler}>
               Logout
-            </button>
+            </p>
           </div>
 
         </div>
