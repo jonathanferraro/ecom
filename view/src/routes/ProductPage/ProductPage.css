@@ -3,6 +3,20 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .product-page-back-button {
+    margin: 20px 0 30px 20px;
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .product-page-back-button:hover {
+    background-color: #555;
+  }
+
   
   .product-page h2 {
     font-size: 24px;
@@ -13,6 +27,7 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    margin: 0 50px;
   }
   
   .product-page-image {
@@ -23,12 +38,13 @@
   }
   
   .product-page-image img {
-    width: 300px;
+    width: 600px;
     height: auto;
   }
   
   .product-page-info {
     flex-grow: 1;
+    max-width: 800px;
   }
   
   .product-page-purchase {

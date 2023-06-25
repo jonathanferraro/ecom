@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { selectProducts } from "../../store/products/Products.reducers";
 import { useSelector, useDispatch } from "react-redux";
 import { loadProducts } from "../../store/products/Products.actions";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
 
-import { selectUser } from "../../store/auth/authSlice";
 
 import './Products.css';
 

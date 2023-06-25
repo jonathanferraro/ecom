@@ -1,13 +1,16 @@
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   BrowserRouter,
   Route,
   Routes
 } from 'react-router-dom';
 
+import './App.css';
+
 import { Products } from "./routes/Products/Products";
 import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
 import { Register } from "./routes/Register/Register";
 import { Login } from "./routes/Login/Login";
 import { Cart } from "./routes/Cart/Cart";
@@ -22,17 +25,20 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route exact path="/" element={<Products/>} />
-          <Route path='/products/:id' element={<ProductPage/>} />
-          <Route path='/categories/:category' element={<ProductCategories/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path='/profile' element={<Profile/>} />
-          <Route path='/cart' element={<Cart/>} />
+        <div className="main-content">
+          <Routes>
+            <Route exact path="/" element={<Products/>} />
+            <Route path='/products/:id' element={<ProductPage/>} />
+            <Route path='/categories/:category' element={<ProductCategories/>} />
+            <Route path="/register" element={<Register/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path='/profile' element={<Profile/>} />
+            <Route path='/cart' element={<Cart/>} />
 
-          <Route path="test" element={<Test/>} />
-        </Routes>
+            <Route path="/test" element={<Test/>} />
+          </Routes>
+        </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );

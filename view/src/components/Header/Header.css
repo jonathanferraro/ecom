@@ -18,8 +18,8 @@
   }
   
   .logo img {
-    width: 100px;
-    height: 60px;
+    width: auto;
+    height: 40px;
     cursor: pointer;
   }
   

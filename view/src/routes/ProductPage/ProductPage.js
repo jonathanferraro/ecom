@@ -31,10 +31,10 @@ export function ProductPage() {
   
     return (
       <div>
+        <button className='product-page-back-button' onClick={() => navigate('/')}>{'<'}  Continue Shopping</button>
         {product ? (
           <div className='product-page'>
-            <button onClick={() => navigate('/')}>{'<'}  Continue Shopping</button>
-            <h2>{product.name}</h2>
+            
             <div className='product-page-body'>
                 <div className='product-page-image'>
                     <img src={product.image_url} alt={product.name} />
@@ -42,7 +42,7 @@ export function ProductPage() {
                 <div className='product-page-info'>
                     <div className='product-page-purchase'>
                         <h2>{product.name}</h2>
-                        <h3>$24.99</h3>
+                        <h3>${product.price}</h3>
                         {!addedToCart? 
                           <button onClick={addToCartHandler}>Add to Cart</button>
                           :

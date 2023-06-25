@@ -1,0 +1,38 @@
+
+
+.footer-component {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 70px;
+}
+
+.footer-container {
+    background-color: rgb(75, 73, 109);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-item {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .footer-item p {
+    margin: 0;
+    color: white;
+  }
+  
+  .footer-item a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-item a:hover {
+    text-decoration: underline;
+  }
+  
+  
