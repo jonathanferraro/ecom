@@ -7,7 +7,7 @@ import { logout } from '../../apis/auth';
 import { CartSidebar } from '../CartSidebar/CartSidebar';
 import { ProfileDropdown } from '../ProfileDropdown/ProfileDropdown';
 
-import shamazonLogo from 'C:/Users/swagn/OneDrive/Desktop/ecom/view/src/shamazon3.png';
+import shamazonLogo from '../../shamazon3.png';
 import './Header.css';
 
 export function Header() {
