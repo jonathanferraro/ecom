@@ -23,23 +23,29 @@ import {Test} from './components/Test';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Header />
+      <div className="main">
         <div className="main-content">
-          <Routes>
-            <Route exact path="/" element={<Products/>} />
-            <Route path='/products/:id' element={<ProductPage/>} />
-            <Route path='/categories/:category' element={<ProductCategories/>} />
-            <Route path="/register" element={<Register/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path='/profile' element={<Profile/>} />
-            <Route path='/cart' element={<Cart/>} />
+        <BrowserRouter>
+            <Header />
 
-            <Route path="/test" element={<Test/>} />
-          </Routes>
+              <Routes>
+                <Route exact path="/" element={<Products/>} />
+                <Route path='/products/:id' element={<ProductPage/>} />
+                <Route path='/categories/:category' element={<ProductCategories/>} />
+                <Route path="/register" element={<Register/>} />
+                <Route path="/login" element={<Login/>} />
+                <Route path='/profile' element={<Profile/>} />
+                <Route path='/cart' element={<Cart/>} />
+
+                <Route path="/test" element={<Test/>} />
+              </Routes>
+            
+        </BrowserRouter>
         </div>
+      </div>
+      <div className="footer">
         <Footer />
-      </BrowserRouter>
+      </div>
     </div>
   );
 }
