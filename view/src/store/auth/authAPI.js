@@ -6,7 +6,7 @@ export const isAuthenticated = createAsyncThunk(
     async () => {
 
         try {
-          const response = await fetch('http://localhost:8000/api/status', {
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/api/status`, {
             credentials: 'include',
           });
           if (response.ok) {

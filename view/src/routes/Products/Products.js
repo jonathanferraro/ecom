@@ -19,7 +19,6 @@ export const Products = () => {
     <div>
       <div className="all-products">
         {Object.values(productList).map((product) => (
-            
             <ProductCard
               key={product.id}
               id={product.id}
@@ -28,7 +27,6 @@ export const Products = () => {
               url={product.image_url}
               price={product.price}
             />
-
         ))}
       </div>
     </div>

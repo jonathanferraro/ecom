@@ -1,7 +1,7 @@
 
 export const addToCart = async (product_id) => {
     try {
-        const response = await fetch('http://localhost:8000/api/cart', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/cart`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ product_id }),
@@ -26,7 +26,7 @@ export const addToCart = async (product_id) => {
 
 export const editCart = async ({product_id, quantity}) => {
     try {
-        const response = await fetch('http://localhost:8000/api/cart', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/cart`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ product_id, quantity }),
@@ -56,7 +56,7 @@ export const editCart = async ({product_id, quantity}) => {
 
 export const deleteCartItem = async (product_id) => {
     try {
-        const response = await fetch('http://localhost:8000/api/cart', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/cart`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ product_id }),

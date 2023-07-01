@@ -27,7 +27,7 @@
 
 export const getUser = async () => {
   try {
-    const response = await fetch('http://localhost:8000/api/user', {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -51,7 +51,7 @@ export const getUser = async () => {
 
 export const register = async ({email, password, l_name, f_name }) => {
       try {
-          const response = await fetch('http://localhost:8000/api/register', {
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/api/register`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ email, password, l_name, f_name }),
@@ -76,7 +76,7 @@ export const register = async ({email, password, l_name, f_name }) => {
 
   export const login = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:8000/api/login', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ export const register = async ({email, password, l_name, f_name }) => {
 
 
   export function logout() {
-    return fetch('http://localhost:8000/api/logout', {
+    return fetch(`${process.env.REACT_APP_API_URL}/api/logout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

@@ -5,7 +5,7 @@ export const loadCart = createAsyncThunk(
     'cart/loadCart',
     async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/cart', {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/cart`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
