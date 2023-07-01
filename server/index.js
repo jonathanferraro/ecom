@@ -14,7 +14,7 @@ const initializePassport = require('./loaders/passport-config');
 // cors
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: process.env.CORS_ORIGIN,
     credentials: true
 }));
 
