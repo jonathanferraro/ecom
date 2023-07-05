@@ -64,8 +64,10 @@ router.post('/register', async (req, res) => {
 
 router.get('/status', (req, res) => {
     if (req.isAuthenticated()) {
+        console.log('user is authenticated')
         res.status(200).json({ authenticated: true });
     } else {
+      console.log('user is NOT authenticated')
         res.status(400).json({ authenticated: false });
     }
 });
