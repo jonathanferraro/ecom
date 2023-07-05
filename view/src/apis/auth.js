@@ -115,6 +115,8 @@ export const register = async ({email, password, l_name, f_name }) => {
         withCredentials: true, // Send cookies with the request
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Origin': process.env.REACT_APP_PUBLIC_URL
         },
       });
   

@@ -39,6 +39,11 @@ router.post('/login', (req, res, next) => {
         if (err) {
           return next(err);
         }
+
+       // Set CORS headers
+       res.setHeader('Access-Control-Allow-Origin', process.env.CORS_ORIGIN);
+       res.setHeader('Access-Control-Allow-Credentials', 'true');
+
         return res.json({ message: 'Login successful' });
       });
     })(req, res, next);
