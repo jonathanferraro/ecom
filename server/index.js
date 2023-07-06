@@ -38,8 +38,9 @@ app.use(session({
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7,
         secure: 'auto',
-        sameSite: 'lax',
-    }
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    },
+    proxy: true,
 }));
 
 app.use(passport.initialize());
