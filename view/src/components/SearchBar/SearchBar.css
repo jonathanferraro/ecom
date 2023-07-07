@@ -1,0 +1,29 @@
+.profile-dropdown {
+    position: relative;
+  }
+  
+  .profile-dropdown-menu {
+    position: absolute;
+    left: 0px;
+    top: calc(100% + 1.5rem);
+    background-color: white;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-35px);
+    transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+    /*  */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-dropdown-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+

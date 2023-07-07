@@ -6,6 +6,7 @@ import { isAuthenticated } from '../../store/auth/authAPI';
 import { logout } from '../../apis/auth';
 import { CartSidebar } from '../CartSidebar/CartSidebar';
 import { ProfileDropdown } from '../ProfileDropdown/ProfileDropdown';
+import { SearchBar } from '../SearchBar/SearchBar';
 
 import shamazonLogo from '../../shamazon3.png';
 import './Header.css';
@@ -44,7 +45,7 @@ export function Header() {
                     />
                 </div>
                 <div>
-                    <p>potential search bar</p>
+                    <SearchBar />
                 </div>
 
                 <div>

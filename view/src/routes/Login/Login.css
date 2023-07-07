@@ -82,3 +82,15 @@ p {
   color: #636262;
   font-weight: 600;
 }
+
+
+.login-form-password-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.login-form-password-text p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

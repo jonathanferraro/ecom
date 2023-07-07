@@ -36,6 +36,7 @@ export function Login() {
         }
     };
 
+
     return (
      <div className="login">
       <div className="login-box">
@@ -55,7 +56,10 @@ export function Login() {
             />
           </div>
           <div className="form-field">
-            <label htmlFor="password">Password</label>
+            <div className='login-form-password-text'>
+              <label htmlFor="password">Password</label>
+              <p onClick={() => alert('Try to remember your password.')}>Forgot your password?</p>
+            </div>
             <input
               type="password"
               id="password"
