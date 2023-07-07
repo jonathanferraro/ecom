@@ -52,7 +52,7 @@ export function CartSidebar() {
     return (
       <div className="cart-dropdown" data-cart-dropdown ref={dropdownRef}>
         <button className="link" data-dropdown-button onClick={toggleDropdown}>
-          Cart
+          <p>Cart</p> <p className='cart-dropdown-arrow'>▼</p>
         </button>
   
         <div

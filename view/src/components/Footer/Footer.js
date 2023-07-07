@@ -12,7 +12,7 @@ export function Footer() {
                     <p><a href='/about'>About</a></p>
                 </div>
                 <div className='footer-item'>
-                    <p>Website designed by Jonathan Ferraro</p>
+                    <p>Website developed and designed by <a href='https://github.com/jonathanferraro'>Jonathan Ferraro</a></p>
                 </div>
             </div>
         </div>

@@ -50,17 +50,17 @@ export function Header() {
                 <div>
                     <p>{authenticated ? (<div>Logged IN</div>) : (<div>Logged OUT</div>)}</p>
                 </div>
-
-                <CartSidebar />
+    
 
                 {authenticated && <ProfileDropdown />}
 
-                {authenticated ? (
-                    <button onClick={logoutHandler}>Logout</button>
-                    ) : (
+                {!authenticated && 
                         <button onClick={() => navigate('/login')}>Hello, Sign In</button>
-                    )}
+                    }
+            
+                <CartSidebar />
             </div>
+
             <div className='nav-header'>
                 <p className='nav-header-link' data-category='all' onClick={handleCategoryNavigate}>All Products</p>
                 <p className='nav-header-link' data-category='clothing' onClick={handleCategoryNavigate}>Clothing</p>

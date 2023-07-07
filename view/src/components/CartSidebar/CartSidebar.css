@@ -34,14 +34,14 @@
     margin-bottom: 20px;
   } */
 
-  /*  */
+  /* dropdown start */
   .cart-dropdown {
     position: relative;
   }
   
   .cart-dropdown-menu {
     position: absolute;
-    left: -40px;
+    left: -300px;
     top: calc(100% + 2.5rem);
     background-color: white;
     padding: 0.75rem;
@@ -51,7 +51,8 @@
     pointer-events: none;
     transform: translateY(-40px);
     transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
-    /*  */
+    /* dropdown end */
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,4 +105,19 @@
 
   .dropdown-cart-item-info p {
     color: rgb(36, 35, 35);
+  }
+
+  .cart-dropdown .link {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .cart-dropdown .link p {
+    color: white;
+    margin-right: 4px;
+  }
+
+  .cart-dropdown-arrow {
+    margin-top: 6px;
+    font-size: 8px;
   }

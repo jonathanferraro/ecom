@@ -43,7 +43,7 @@ export function ProfileDropdown() {
     return (
       <div className="profile-dropdown" data-cart-dropdown ref={dropdownRef}>
         <button className="link" data-dropdown-button onClick={toggleDropdown}>
-          Account
+          <p>Account</p> <p className='cart-dropdown-arrow'>▼</p>
         </button>
   
         <div
