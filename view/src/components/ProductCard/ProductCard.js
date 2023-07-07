@@ -32,7 +32,7 @@ export function ProductCard(props) {
         {name}
       </h3>
       <p className="product-price" onClick={() => navigate(`/products/${id}`)}>
-        {price}
+        ${price}
       </p>
       {!addedToCart ? 
         (<button className="product-add-to-cart" onClick={addToCartHandler} >

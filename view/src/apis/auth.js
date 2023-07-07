@@ -1,32 +1,5 @@
 import axios from 'axios';
 
-// export function isAuthenticated() {
-//   const authenticated = localStorage.getItem('authenticated');
-//   if (authenticated) {
-//     return true;
-//   } else {
-//     return fetch('http://localhost:8000/api/status')
-//       .then(response => {
-//         if (response.ok) {
-//           // User is authenticated
-//           localStorage.setItem('authenticated', 'true');
-//           return true;
-//         } else {
-//           // User is not authenticated
-//           localStorage.removeItem('authenticated');
-//           return false;
-//         }
-//       })
-//       .catch(error => {
-//         // Handle any errors that occurred during the request
-//         console.error('Error checking authentication status:', error);
-//         localStorage.removeItem('authenticated');
-//         return false;
-//       });
-//   }
-// };
-
-
 export const getUser = async () => {
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user`, {
@@ -76,66 +49,66 @@ export const register = async ({email, password, l_name, f_name }) => {
       }
   };
 
-  // export const login = async (email, password) => {
-  //   try {
-  //     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ email, password }),
-  //       credentials: 'include',
-  //     });
-  
-  //     if (response.ok) {
-  //       // Login successful
-  //       const data = await response.json();
-  //       return data;
-  //       // Handle the response data as needed
-  //     } else {
-  //       // Login failed
-  //       // Handle the error and display an appropriate message
-  //       const errorData = await response.json();
-  //       console.error('Login failed:', errorData.error);
-  //       return errorData;
-  //     }
-  //   } catch (error) {
-  //     // Handle any errors that occurred during the request
-  //     console.error('Error logging in:', error);
-  //   }
-  // };
-
-
   export const login = async (email, password) => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, {
-        email,
-        password,
-      }, {
-        withCredentials: true, // Send cookies with the request
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Access-Control-Allow-Origin': process.env.REACT_APP_PUBLIC_URL
         },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include',
       });
   
-      if (response.status === 200) {
+      if (response.ok) {
         // Login successful
-        return response.data;
+        const data = await response.json();
+        return data;
         // Handle the response data as needed
       } else {
         // Login failed
         // Handle the error and display an appropriate message
-        console.error('Login failed:', response.data.error);
-        return response.data;
+        const errorData = await response.json();
+        console.error('Login failed:', errorData.error);
+        return errorData;
       }
     } catch (error) {
       // Handle any errors that occurred during the request
       console.error('Error logging in:', error);
-      throw error; // Throw the error to handle it in the calling code
     }
   };
+
+
+  // export const login = async (email, password) => {
+  //   try {
+  //     const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, {
+  //       email,
+  //       password,
+  //     }, {
+  //       withCredentials: true, // Send cookies with the request
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Accept': 'application/json',
+  //         'Access-Control-Allow-Origin': process.env.REACT_APP_PUBLIC_URL
+  //       },
+  //     });
+  
+  //     if (response.status === 200) {
+  //       // Login successful
+  //       return response.data;
+  //       // Handle the response data as needed
+  //     } else {
+  //       // Login failed
+  //       // Handle the error and display an appropriate message
+  //       console.error('Login failed:', response.data.error);
+  //       return response.data;
+  //     }
+  //   } catch (error) {
+  //     // Handle any errors that occurred during the request
+  //     console.error('Error logging in:', error);
+  //     throw error; // Throw the error to handle it in the calling code
+  //   }
+  // };
 
 
   export function logout() {

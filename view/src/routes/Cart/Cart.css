@@ -1,6 +1,4 @@
-/* .cart-component {
 
-} */
 
 .cart-component h1 {
   font-size: 28px;
@@ -67,4 +65,10 @@
 
 .cart-products-background {
   background-color: #fff;
+}
+
+/* signed out cart */
+
+.button-group button {
+  margin-right: 20px;
 }

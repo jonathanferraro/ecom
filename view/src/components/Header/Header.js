@@ -53,7 +53,7 @@ export function Header() {
 
                 <CartSidebar />
 
-                {<ProfileDropdown />}
+                {authenticated && <ProfileDropdown />}
 
                 {authenticated ? (
                     <button onClick={logoutHandler}>Logout</button>

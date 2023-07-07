@@ -13,6 +13,10 @@
   border-radius: 5px;
 }
 
+.register-message {
+  margin-bottom: 25px;
+}
+
 .register-message h1 {
   margin: 0 0 10px;
   font-size: 24px;
@@ -36,18 +40,23 @@
 }
 
 .form-field {
-  margin-bottom: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .form-field label {
   margin-bottom: 5px;
   font-weight: bold;
+  padding-left: 5px;
 }
 
 .form-field input {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  width: 95%;
 }
 
 .register-button {
@@ -58,6 +67,7 @@
   border-radius: 3px;
   cursor: pointer;
   font-size: 16px;
+  margin-top: 15px;
 }
 
 .register-button:hover {

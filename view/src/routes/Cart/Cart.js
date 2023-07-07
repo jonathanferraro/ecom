@@ -43,11 +43,11 @@ export function Cart() {
       <div className="empty-cart">
         <h1>Your shopping cart is empty</h1>
         <div className="button-group">
-          <button className="sign-in-button" onClick={() => navigate("/login")}>
+          <button className="login-button" onClick={() => navigate("/login")}>
             Sign in to your account
           </button>
           <button
-            className="sign-up-button"
+            className="login-button"
             onClick={() => navigate("/register")}
           >
             Sign up now
