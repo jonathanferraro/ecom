@@ -1,8 +1,12 @@
 import React from 'react';
+import { ProductsLoading } from './ProductsLoading/ProductsLoading';
 
 export function Test() {
 
     return (
-        <h1>Test Component</h1>
+        <div>
+            <h1>Test Component</h1>
+            <ProductsLoading />
+        </div>
     )
 };

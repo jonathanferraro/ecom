@@ -1,0 +1,9 @@
+.products-loading img {
+    height: 200px;
+    width: auto;
+}
+
+.products-loading p {
+    color: black;
+    font-size: 1.5rem;
+}
