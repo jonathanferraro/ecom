@@ -73,7 +73,7 @@ export function Login() {
         Don't have an account? Sign up <a href="/register">here</a>.
       </h4>
       <p>
-        By clicking Sign In, you agree to our Terms, Privacy Policy and Cookies
+        By clicking Sign In, you agree to our <a className='about-link' href='/about'>Terms</a>, <a className='about-link' href='/about'>Privacy Policy</a> and Cookies
         Policy.
       </p>
       </div>

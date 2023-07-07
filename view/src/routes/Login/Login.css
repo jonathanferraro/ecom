@@ -76,3 +76,9 @@ p {
   color: #888;
   text-align: center;
 }
+
+.about-link {
+  text-decoration: none;
+  color: #636262;
+  font-weight: 600;
+}

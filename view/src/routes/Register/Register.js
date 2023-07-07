@@ -112,7 +112,8 @@ export function Register() {
               Register
             </button>
           </form>
-          <p>By clicking Register, you agree to our Terms, Privacy Policy and Cookies Policy.</p>
+          <p>By clicking Sign In, you agree to our <a className='about-link' href='/about'>Terms</a>, <a className='about-link' href='/about'>Privacy Policy</a> and Cookies
+        Policy.</p>
         </div>
       </div>
     )

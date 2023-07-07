@@ -17,6 +17,7 @@ import { Cart } from "./routes/Cart/Cart";
 import { ProductPage } from "./routes/ProductPage/ProductPage";
 import { ProductCategories } from "./routes/ProductCategories/ProductCategories";
 import { Profile } from "./routes/Profile/Profile";
+import { About } from "./routes/About/About";
 
 import {Test} from './components/Test';
 
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/login" element={<Login/>} />
                 <Route path='/profile' element={<Profile/>} />
                 <Route path='/cart' element={<Cart/>} />
+                <Route path='/about' element={<About/>} />
 
                 <Route path="/test" element={<Test/>} />
               </Routes>

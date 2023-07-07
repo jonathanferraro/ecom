@@ -11,7 +11,7 @@ export function Footer() {
                     <p>Any branding/ logo/ themes/ colors used on this website are not affiliated or endorsed by <a href='https://www.amazon.com'>Amazon©</a> and are purely coincidental.</p>
                 </div>
                 <div className='footer-item'>
-                    <p>About</p>
+                    <p><a href='/about'>About</a></p>
                 </div>
                 <div className='footer-item'>
                     <p>Website designed by Jonathan Ferraro</p>
