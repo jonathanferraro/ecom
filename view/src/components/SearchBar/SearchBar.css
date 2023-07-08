@@ -26,4 +26,31 @@
     pointer-events: auto;
   }
 
+.search-bar-items {
+    max-height: 600px;
+    overflow: auto;
+}
 
+.search-bar-product-card {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin: 10px 0;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.search-bar-product-card p {
+    color: black;
+    padding: 0 20px 0 30px
+
+}
+
+.search-bar-product-card img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    padding-bottom: 10px;
+}
