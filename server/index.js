@@ -7,6 +7,7 @@ const passport = require('passport');
 const productRoutes = require('./routes/products');
 const cartRoutes = require('./routes/cart');
 const userRoutes = require('./routes/users');
+const reviewRoutes = require('./routes/reviews')
 const { getUserByEmail, getUserById }  = require('./model/users');
 const initializePassport = require('./loaders/passport-config');
 
@@ -61,6 +62,7 @@ const port = process.env.PORT || 8000;
 app.use('/api', userRoutes);
 app.use('/api', productRoutes);
 app.use('/api', cartRoutes);
+app.use('/api', reviewRoutes);
 
 
 
