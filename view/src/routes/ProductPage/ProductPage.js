@@ -31,7 +31,9 @@ export function ProductPage() {
   
     return (
       <div>
-        <button className='product-page-back-button' onClick={() => navigate('/')}>{'<'}  Continue Shopping</button>
+        <div className='product-page-back-button'>
+          <button onClick={() => navigate('/')}>{'<'}  Continue Shopping</button>
+        </div>
         {product ? (
           <div className='product-page'>
             

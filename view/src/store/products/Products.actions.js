@@ -13,3 +13,16 @@ export const loadProducts = createAsyncThunk(
     }
 );
 
+
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/users" element={<Users />} />
+    </Routes>
+  </BrowserRouter>
+);

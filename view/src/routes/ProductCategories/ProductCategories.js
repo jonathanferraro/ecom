@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { selectProducts } from "../../store/products/Products.reducers";
+import { selectProducts, selectProductsStatus } from "../../store/products/Products.reducers";
 import { useSelector, useDispatch } from "react-redux";
 import { loadProducts } from "../../store/products/Products.actions";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
 import { useParams } from "react-router-dom";
+import { ProductsLoading } from "../../components/ProductsLoading/ProductsLoading";
 
 import '../Products/Products.css';
 import './ProductCategories.css'
@@ -14,6 +15,7 @@ export const ProductCategories = () => {
   const productList = useSelector(selectProducts);
   const dispatch = useDispatch();
   let categoryName = '';
+  const productsStatus = useSelector(selectProductsStatus);
 
   const formatCategoryName = (str) => {
     let firstLetter = true;
@@ -39,24 +41,32 @@ export const ProductCategories = () => {
 
   return (
     <div>
-        <h1 className="category-title">{category === 'all' ? 'All Products' : categoryName}</h1>
-        <div className="all-products">
-        {Object.values(productList).map((product) => {
-          if (category === 'all' || product.category === category) {
-            return (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                description={product.description}
-                url={product.image_url}
-                price={product.price}
-              />
-            );
-          }
-          return null;
-        })}
-      </div>
+
+        
+        { productsStatus === 'pending' ? 
+          <ProductsLoading />
+           :
+           <div>
+            <h1 className="category-title">{category === 'all' ? 'All Products' : categoryName}</h1>
+            <div className="all-products">
+              {Object.values(productList).map((product) => {
+                if (category === 'all' || product.category === category) {
+                  return (
+                    <ProductCard
+                      key={product.id}
+                      id={product.id}
+                      name={product.name}
+                      description={product.description}
+                      url={product.image_url}
+                      price={product.price}
+                    />
+                  );
+                }
+                return null;
+              })}
+            </div>
+          </div>
+        }
     </div>
   );
 };
