@@ -15,9 +15,6 @@ export function SearchBar() {
     const navigate = useNavigate()
 
 
-    // loopp through poroducts
-    // check product.name and product.description
-
     const filterProducts = () => {
         Object.values(products).forEach((product) => {
             const name = product.name.toLowerCase();
@@ -66,22 +63,39 @@ export function SearchBar() {
             />
         </button>
   
-        { (searchProducts && searchTerm) && <div
-          className={`profile-dropdown-menu ${test ? 'active' : ''}`}
-          onClick={(e) => e.stopPropagation()}
-        >
+        { (searchProducts.length > 0 && searchTerm) ? 
+        
+          (<div
+            className={`profile-dropdown-menu ${test ? 'active' : ''}`}
+            onClick={(e) => e.stopPropagation()}
+          >
 
 
-        {<div className='search-bar-items'>
-          {searchProducts.map((product) => (
-            <div className='search-bar-product-card' onClick={() => window.location.href = `/products/${product.id}`}>
-                <img src={product.image_url}/>
-                <p>{product.name}</p>
-            </div>
-          ))}
-        </div>}
+          {<div className='search-bar-items'>
+            {searchProducts.map((product) => (
+              <div className='search-bar-product-card' onClick={() => window.location.href = `/products/${product.id}`}>
+                  <img src={product.image_url}/>
+                  <p>{product.name}</p>
+              </div>
+            ))}
+          </div>}
 
-        </div>}
+          </div>)
+        
+        : 
+        
+          (<div
+            className={`profile-dropdown-menu ${test ? 'active' : ''}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+
+            {<div className='search-bar-items'>
+                <div  >
+                  <p>No products found.</p>
+                </div>
+            </div>}
+          </div>)
+        }
       </div>
     );
 };

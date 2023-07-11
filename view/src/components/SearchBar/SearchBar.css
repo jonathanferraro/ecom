@@ -26,6 +26,11 @@
     pointer-events: auto;
   }
 
+  .profile-dropdown button input {
+    padding: 7px;
+    width: 400px;
+  }
+
 .search-bar-items {
     max-height: 600px;
     overflow: auto;
