@@ -59,6 +59,11 @@ export function ProductPage() {
                     </div>
                 </div>
             </div>
+            <div className='reviews'>
+              <h3>Reviews</h3>
+            </div>
+
+
           </div>
         ) : (
           <p>Loading...</p>
