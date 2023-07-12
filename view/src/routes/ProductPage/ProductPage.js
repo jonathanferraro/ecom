@@ -6,6 +6,7 @@ import { selectProducts } from '../../store/products/Products.reducers';
 import { loadProducts } from '../../store/products/Products.actions';
 import { addToCart } from '../../apis/cart';
 import { selectAuthenticated } from '../../store/auth/authSlice';
+import { Reviews } from '../../components/Reviews/Reviews';
 
 export function ProductPage() {
     const dispatch = useDispatch();
@@ -14,10 +15,7 @@ export function ProductPage() {
     const { id } = useParams();
     const product = useSelector(selectProducts)[id];
     const [addedToCart, setAddedToCart] = useState(false);
-  
-    useEffect(() => {
-      dispatch(loadProducts());
-    }, []);
+
 
     const addToCartHandler = async () => {
       if (authenticated) {
@@ -28,6 +26,11 @@ export function ProductPage() {
       }
 
     };
+
+    useEffect(() => {
+      dispatch(loadProducts());
+    }, []);
+
   
     return (
       <div>
@@ -59,9 +62,8 @@ export function ProductPage() {
                     </div>
                 </div>
             </div>
-            <div className='reviews'>
-              <h3>Reviews</h3>
-            </div>
+            
+            <Reviews />
 
 
           </div>

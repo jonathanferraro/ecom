@@ -6,19 +6,19 @@ const reviewsSlice = createSlice({
     name: 'reviews',
     initialState: {
         status: 'idle', // fulfilled, pending, rejected
-        products: {},
+        reviews: {},
     },
     reducers: {},
     extraReducers: builder => {
         builder
 
             .addCase(loadReviews.fulfilled, (state, action) => {
-                // state.status = 'fulfilled'
-                // const products  = action.payload;
-                // for (const product of products) {
-                //   const { id } = product;
-                //   state.products[id] = product;
-                // }
+                state.status = 'fulfilled'
+                const reviews  = action.payload;
+                for (const review of reviews) {
+                  const { id } = review;
+                  state.reviews[id] = review;
+                }
                 return;
             })
             .addCase(loadReviews.pending, (state, action) => {
@@ -30,5 +30,7 @@ const reviewsSlice = createSlice({
     }
 });
 
+export const selectReviews = (state) => state.reviews.reviews;
+export const selectReviewsStatus = (state) => state.reviews.status;
 
 export default reviewsSlice.reducer;

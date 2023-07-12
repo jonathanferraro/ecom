@@ -15,7 +15,7 @@ export const loadReviews = createAsyncThunk(
           const data = await res.json();
           return data.data;
         } catch (error) {
-          throw new Error(error.message); // Throw the error
+          throw new Error(error.message); 
         }
       }
   );
