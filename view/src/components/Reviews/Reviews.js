@@ -11,6 +11,19 @@ export function Reviews() {
     const reviewsStatus = useSelector(selectReviewsStatus);
     const [displayedReviews, setDisplayedReviews] = useState([]);
 
+    const reviewStar = (numStr) => {
+      let num = Number(numStr);
+      let stars = ''
+      while (num > 0) {
+        stars += '★';
+        num -= 1;
+      };
+      while (stars.length < 5) {
+        stars += '☆'
+      };
+      return stars;
+    }
+
     const pickReviews = () => {
         const iterations = Math.floor(Math.random() * 5) + 3;
   
@@ -42,17 +55,17 @@ export function Reviews() {
     }, [reviewsStatus]);
 
     return (
-        <div>
+        <div className='review-component'>
             {displayedReviews && 
             (<div className='reviews'>
               <h3>Reviews</h3>
               <div>
                 {(displayedReviews) && (displayedReviews.map((review) => (
                   <div className='review-item'> 
-                    <div>
-                      <p>{review.review_number}</p><p>{review.name}</p>
+                    <div className='review-title'>
+                      <p className='review-stars'>{reviewStar(review.review_number)}</p><p className='review-name'>-{review.name}</p>
                     </div>
-                    <div>
+                    <div className='review-content'>
                       <p>{review.review_content}</p>
                     </div>
                   </div>
